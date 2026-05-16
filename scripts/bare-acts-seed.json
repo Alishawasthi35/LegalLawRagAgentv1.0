@@ -1,0 +1,402 @@
+[
+  {
+    "act": "Constitution of India",
+    "act_short": "Constitution",
+    "section": "14",
+    "heading": "Equality before law",
+    "text": "The State shall not deny to any person equality before the law or the equal protection of the laws within the territory of India.",
+    "in_force": true
+  },
+  {
+    "act": "Constitution of India",
+    "act_short": "Constitution",
+    "section": "19",
+    "heading": "Protection of certain rights regarding freedom of speech, etc.",
+    "text": "(1) All citizens shall have the right (a) to freedom of speech and expression; (b) to assemble peaceably and without arms; (c) to form associations or unions; (d) to move freely throughout the territory of India; (e) to reside and settle in any part of the territory of India; and (g) to practise any profession, or to carry on any occupation, trade or business.",
+    "in_force": true
+  },
+  {
+    "act": "Constitution of India",
+    "act_short": "Constitution",
+    "section": "20",
+    "heading": "Protection in respect of conviction for offences",
+    "text": "(1) No person shall be convicted of any offence except for violation of a law in force at the time of the commission of the act charged as an offence, nor be subjected to a penalty greater than that which might have been inflicted under the law in force at the time of the commission of the offence. (2) No person shall be prosecuted and punished for the same offence more than once. (3) No person accused of any offence shall be compelled to be a witness against himself.",
+    "in_force": true
+  },
+  {
+    "act": "Constitution of India",
+    "act_short": "Constitution",
+    "section": "21",
+    "heading": "Protection of life and personal liberty",
+    "text": "No person shall be deprived of his life or personal liberty except according to procedure established by law.",
+    "in_force": true
+  },
+  {
+    "act": "Constitution of India",
+    "act_short": "Constitution",
+    "section": "22",
+    "heading": "Protection against arrest and detention in certain cases",
+    "text": "(1) No person who is arrested shall be detained in custody without being informed, as soon as may be, of the grounds for such arrest nor shall he be denied the right to consult, and to be defended by, a legal practitioner of his choice. (2) Every person who is arrested and detained in custody shall be produced before the nearest magistrate within a period of twenty-four hours of such arrest excluding the time necessary for the journey from the place of arrest to the court of the magistrate and no such person shall be detained in custody beyond the said period without the authority of a magistrate.",
+    "in_force": true
+  },
+  {
+    "act": "Constitution of India",
+    "act_short": "Constitution",
+    "section": "32",
+    "heading": "Remedies for enforcement of rights conferred by this Part",
+    "text": "(1) The right to move the Supreme Court by appropriate proceedings for the enforcement of the rights conferred by this Part is guaranteed. (2) The Supreme Court shall have power to issue directions or orders or writs, including writs in the nature of habeas corpus, mandamus, prohibition, quo warranto and certiorari, whichever may be appropriate, for the enforcement of any of the rights conferred by this Part.",
+    "in_force": true
+  },
+  {
+    "act": "Constitution of India",
+    "act_short": "Constitution",
+    "section": "136",
+    "heading": "Special leave to appeal by the Supreme Court",
+    "text": "(1) Notwithstanding anything in this Chapter, the Supreme Court may, in its discretion, grant special leave to appeal from any judgment, decree, determination, sentence or order in any cause or matter passed or made by any court or tribunal in the territory of India.",
+    "in_force": true
+  },
+  {
+    "act": "Constitution of India",
+    "act_short": "Constitution",
+    "section": "226",
+    "heading": "Power of High Courts to issue certain writs",
+    "text": "(1) Notwithstanding anything in article 32, every High Court shall have power, throughout the territories in relation to which it exercises jurisdiction, to issue to any person or authority, including in appropriate cases, any Government, within those territories directions, orders or writs, including writs in the nature of habeas corpus, mandamus, prohibition, quo warranto and certiorari, or any of them, for the enforcement of any of the rights conferred by Part III and for any other purpose.",
+    "in_force": true
+  },
+  {
+    "act": "Indian Penal Code, 1860",
+    "act_short": "IPC",
+    "section": "302",
+    "heading": "Punishment for murder",
+    "text": "Whoever commits murder shall be punished with death, or imprisonment for life, and shall also be liable to fine.",
+    "in_force": false
+  },
+  {
+    "act": "Indian Penal Code, 1860",
+    "act_short": "IPC",
+    "section": "304",
+    "heading": "Punishment for culpable homicide not amounting to murder",
+    "text": "Whoever commits culpable homicide not amounting to murder, shall be punished with imprisonment for life, or imprisonment of either description for a term which may extend to ten years, and shall also be liable to fine, if the act by which the death is caused is done with the intention of causing death, or of causing such bodily injury as is likely to cause death; or with imprisonment of either description for a term which may extend to ten years, or with fine, or with both, if the act is done with the knowledge that it is likely to cause death, but without any intention to cause death, or to cause such bodily injury as is likely to cause death.",
+    "in_force": false
+  },
+  {
+    "act": "Indian Penal Code, 1860",
+    "act_short": "IPC",
+    "section": "307",
+    "heading": "Attempt to murder",
+    "text": "Whoever does any act with such intention or knowledge, and under such circumstances that, if he by that act caused death, he would be guilty of murder, shall be punished with imprisonment of either description for a term which may extend to ten years, and shall also be liable to fine; and if hurt is caused to any person by such act, the offender shall be liable either to imprisonment for life, or to such punishment as is hereinbefore mentioned.",
+    "in_force": false
+  },
+  {
+    "act": "Indian Penal Code, 1860",
+    "act_short": "IPC",
+    "section": "376",
+    "heading": "Punishment for rape",
+    "text": "Whoever, except in the cases provided for in sub-section (2), commits rape, shall be punished with rigorous imprisonment of either description for a term which shall not be less than ten years, but which may extend to imprisonment for life, and shall also be liable to fine.",
+    "in_force": false
+  },
+  {
+    "act": "Indian Penal Code, 1860",
+    "act_short": "IPC",
+    "section": "420",
+    "heading": "Cheating and dishonestly inducing delivery of property",
+    "text": "Whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is signed or sealed, and which is capable of being converted into a valuable security, shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine.",
+    "in_force": false
+  },
+  {
+    "act": "Indian Penal Code, 1860",
+    "act_short": "IPC",
+    "section": "498A",
+    "heading": "Husband or relative of husband of a woman subjecting her to cruelty",
+    "text": "Whoever, being the husband or the relative of the husband of a woman, subjects such woman to cruelty shall be punished with imprisonment for a term which may extend to three years and shall also be liable to fine.",
+    "in_force": false
+  },
+  {
+    "act": "Bharatiya Nyaya Sanhita, 2023",
+    "act_short": "BNS",
+    "section": "103",
+    "heading": "Punishment for murder",
+    "text": "(1) Whoever commits murder shall be punished with death or imprisonment for life, and shall also be liable to fine. (2) When a group of five or more persons acting in concert commits murder on the ground of race, caste or community, sex, place of birth, language, personal belief or any other similar ground each member of such group shall be punished with death or with imprisonment for life, and shall also be liable to fine.",
+    "in_force": true
+  },
+  {
+    "act": "Bharatiya Nyaya Sanhita, 2023",
+    "act_short": "BNS",
+    "section": "105",
+    "heading": "Punishment for culpable homicide not amounting to murder",
+    "text": "Whoever commits culpable homicide not amounting to murder, shall be punished with imprisonment for life, or imprisonment of either description for a term which shall not be less than five years but which may extend to ten years, and shall also be liable to fine, if the act by which the death is caused is done with the intention of causing death, or of causing such bodily injury as is likely to cause death; or with imprisonment of either description for a term which may extend to ten years, or with fine, or with both, if the act is done with the knowledge that it is likely to cause death, but without any intention to cause death.",
+    "in_force": true
+  },
+  {
+    "act": "Bharatiya Nyaya Sanhita, 2023",
+    "act_short": "BNS",
+    "section": "318",
+    "heading": "Cheating",
+    "text": "Whoever, by deceiving any person, fraudulently or dishonestly induces the person so deceived to deliver any property to any person, or to consent that any person shall retain any property, or intentionally induces the person so deceived to do or omit to do anything which he would not do or omit if he were not so deceived, and which act or omission causes or is likely to cause damage or harm to that person in body, mind, reputation or property, is said to 'cheat'.",
+    "in_force": true
+  },
+  {
+    "act": "Bharatiya Nyaya Sanhita, 2023",
+    "act_short": "BNS",
+    "section": "85",
+    "heading": "Husband or relative of husband of a woman subjecting her to cruelty",
+    "text": "Whoever, being the husband or the relative of the husband of a woman, subjects such woman to cruelty shall be punished with imprisonment for a term which may extend to three years and shall also be liable to fine.",
+    "in_force": true
+  },
+  {
+    "act": "Bharatiya Nyaya Sanhita, 2023",
+    "act_short": "BNS",
+    "section": "63",
+    "heading": "Rape",
+    "text": "A man is said to commit 'rape' if he penetrates his penis, to any extent, into the vagina, mouth, urethra or anus of a woman or makes her to do so with him or any other person; or inserts, to any extent, any object or a part of the body, not being the penis, into the vagina, the urethra or anus of a woman or makes her to do so with him or any other person; or manipulates any part of the body of a woman so as to cause penetration into the vagina, urethra, anus or any part of body of such woman or makes her to do so with him or any other person; or applies his mouth to the vagina, anus, urethra of a woman or makes her to do so with him or any other person, under the circumstances falling under any of the seven following descriptions.",
+    "in_force": true
+  },
+  {
+    "act": "Code of Criminal Procedure, 1973",
+    "act_short": "CrPC",
+    "section": "41",
+    "heading": "When police may arrest without warrant",
+    "text": "(1) Any police officer may without an order from a Magistrate and without a warrant, arrest any person — (a) who commits, in the presence of a police officer, a cognizable offence; (b) against whom a reasonable complaint has been made, or credible information has been received, or a reasonable suspicion exists that he has committed a cognizable offence punishable with imprisonment for a term which may be less than seven years or which may extend to seven years whether with or without fine, if the conditions in clauses (i)-(ii) are satisfied...",
+    "in_force": false
+  },
+  {
+    "act": "Code of Criminal Procedure, 1973",
+    "act_short": "CrPC",
+    "section": "154",
+    "heading": "Information in cognizable cases",
+    "text": "(1) Every information relating to the commission of a cognizable offence, if given orally to an officer in charge of a police station, shall be reduced to writing by him or under his direction, and be read over to the informant; and every such information, whether given in writing or reduced to writing as aforesaid, shall be signed by the person giving it, and the substance thereof shall be entered in a book to be kept by such officer in such form as the State Government may prescribe in this behalf.",
+    "in_force": false
+  },
+  {
+    "act": "Code of Criminal Procedure, 1973",
+    "act_short": "CrPC",
+    "section": "161",
+    "heading": "Examination of witnesses by police",
+    "text": "(1) Any police officer making an investigation under this Chapter, or any police officer not below such rank as the State Government may, by general or special order, prescribe in this behalf, acting on the requisition of such officer, may examine orally any person supposed to be acquainted with the facts and circumstances of the case. (2) Such person shall be bound to answer truly all questions relating to such case put to him by such officer, other than questions the answers to which would have a tendency to expose him to a criminal charge or to a penalty or forfeiture.",
+    "in_force": false
+  },
+  {
+    "act": "Code of Criminal Procedure, 1973",
+    "act_short": "CrPC",
+    "section": "164",
+    "heading": "Recording of confessions and statements",
+    "text": "(1) Any Metropolitan Magistrate or Judicial Magistrate may, whether or not he has jurisdiction in the case, record any confession or statement made to him in the course of an investigation under this Chapter or under any other law for the time being in force, or at any time afterwards before the commencement of the inquiry or trial.",
+    "in_force": false
+  },
+  {
+    "act": "Code of Criminal Procedure, 1973",
+    "act_short": "CrPC",
+    "section": "173",
+    "heading": "Report of police officer on completion of investigation",
+    "text": "(1) Every investigation under this Chapter shall be completed without unnecessary delay. (2) (i) As soon as it is completed, the officer in charge of the police station shall forward to a Magistrate empowered to take cognizance of the offence on a police report, a report in the form prescribed by the State Government...",
+    "in_force": false
+  },
+  {
+    "act": "Code of Criminal Procedure, 1973",
+    "act_short": "CrPC",
+    "section": "437",
+    "heading": "When bail may be taken in case of non-bailable offence",
+    "text": "(1) When any person accused of, or suspected of, the commission of any non-bailable offence is arrested or detained without warrant by an officer in charge of a police station or appears or is brought before a Court other than the High Court or Court of Session, he may be released on bail.",
+    "in_force": false
+  },
+  {
+    "act": "Code of Criminal Procedure, 1973",
+    "act_short": "CrPC",
+    "section": "438",
+    "heading": "Direction for grant of bail to person apprehending arrest",
+    "text": "(1) Where any person has reason to believe that he may be arrested on an accusation of having committed a non-bailable offence, he may apply to the High Court or the Court of Session for a direction under this section; and that Court may, if it thinks fit, direct that in the event of such arrest, he shall be released on bail.",
+    "in_force": false
+  },
+  {
+    "act": "Code of Criminal Procedure, 1973",
+    "act_short": "CrPC",
+    "section": "439",
+    "heading": "Special powers of High Court or Court of Session regarding bail",
+    "text": "(1) A High Court or Court of Session may direct that any person accused of an offence and in custody be released on bail, and if the offence is of the nature specified in sub-section (3) of section 437, may impose any condition which it considers necessary for the purposes mentioned in that sub-section.",
+    "in_force": false
+  },
+  {
+    "act": "Code of Criminal Procedure, 1973",
+    "act_short": "CrPC",
+    "section": "482",
+    "heading": "Saving of inherent powers of High Court",
+    "text": "Nothing in this Code shall be deemed to limit or affect the inherent powers of the High Court to make such orders as may be necessary to give effect to any order under this Code, or to prevent abuse of the process of any Court or otherwise to secure the ends of justice.",
+    "in_force": false
+  },
+  {
+    "act": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+    "act_short": "BNSS",
+    "section": "35",
+    "heading": "When police may arrest without warrant",
+    "text": "(1) Any police officer may without an order from a Magistrate and without a warrant, arrest any person — (a) who commits, in the presence of a police officer, a cognizable offence; (b) against whom a reasonable complaint has been made, or credible information has been received, or a reasonable suspicion exists that he has committed a cognizable offence punishable with imprisonment for a term which may be less than seven years or which may extend to seven years whether with or without fine, if the conditions specified are satisfied...",
+    "in_force": true
+  },
+  {
+    "act": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+    "act_short": "BNSS",
+    "section": "173",
+    "heading": "Information in cognizable cases",
+    "text": "(1) Every information relating to the commission of a cognizable offence, irrespective of the area where the offence is committed, may be given orally or by electronic communication to an officer in charge of a police station, which shall be reduced to writing... (3) Without prejudice to the provisions contained in section 175, on receipt of information relating to the commission of any cognizable offence, which is made punishable for three years or more but less than seven years, the officer in charge of the police station may with the prior permission from an officer not below the rank of Deputy Superintendent of Police, considering the nature and gravity of the offence, (i) proceed to conduct preliminary enquiry to ascertain whether there exists a prima facie case for proceeding in the matter within a period of fourteen days; or (ii) proceed with investigation when there exists a prima facie case.",
+    "in_force": true
+  },
+  {
+    "act": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+    "act_short": "BNSS",
+    "section": "482",
+    "heading": "Direction for grant of bail to person apprehending arrest",
+    "text": "(1) Where any person has reason to believe that he may be arrested on accusation of having committed a non-bailable offence, he may apply to the High Court or the Court of Session for a direction under this section that in the event of such arrest he shall be released on bail; and that Court may, after taking into consideration, inter alia, the following factors, namely: (i) the nature and gravity of the accusation; (ii) the antecedents of the applicant including the fact as to whether he has previously undergone imprisonment on conviction by a Court in respect of any cognizable offence; (iii) the possibility of the applicant to flee from justice; and (iv) where the accusation has been made with the object of injuring or humiliating the applicant by having him so arrested, either reject the application forthwith or issue an interim order for the grant of anticipatory bail.",
+    "in_force": true
+  },
+  {
+    "act": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+    "act_short": "BNSS",
+    "section": "528",
+    "heading": "Saving of inherent powers of High Court",
+    "text": "Nothing in this Sanhita shall be deemed to limit or affect the inherent powers of the High Court to make such orders as may be necessary to give effect to any order under this Sanhita, or to prevent abuse of the process of any Court or otherwise to secure the ends of justice.",
+    "in_force": true
+  },
+  {
+    "act": "Indian Evidence Act, 1872",
+    "act_short": "IEA",
+    "section": "3",
+    "heading": "Interpretation clause",
+    "text": "In this Act the following words and expressions are used in the following senses, unless a contrary intention appears from the context — 'Court' includes all Judges and Magistrates and all persons, except arbitrators, legally authorized to take evidence. 'Fact' means and includes — (1) any thing, state of things, or relation of things, capable of being perceived by the senses; (2) any mental condition of which any person is conscious...",
+    "in_force": false
+  },
+  {
+    "act": "Indian Evidence Act, 1872",
+    "act_short": "IEA",
+    "section": "27",
+    "heading": "How much of information received from accused may be proved",
+    "text": "Provided that, when any fact is deposed to as discovered in consequence of information received from a person accused of any offence, in the custody of a police officer, so much of such information, whether it amounts to a confession or not, as relates distinctly to the fact thereby discovered, may be proved.",
+    "in_force": false
+  },
+  {
+    "act": "Indian Evidence Act, 1872",
+    "act_short": "IEA",
+    "section": "65B",
+    "heading": "Admissibility of electronic records",
+    "text": "(1) Notwithstanding anything contained in this Act, any information contained in an electronic record which is printed on a paper, stored, recorded or copied in optical or magnetic media produced by a computer (hereinafter referred to as the computer output) shall be deemed to be also a document, if the conditions mentioned in this section are satisfied in relation to the information and computer in question and shall be admissible in any proceedings, without further proof or production of the original, as evidence of any contents of the original or of any fact stated therein of which direct evidence would be admissible...",
+    "in_force": false
+  },
+  {
+    "act": "Bharatiya Sakshya Adhiniyam, 2023",
+    "act_short": "BSA",
+    "section": "63",
+    "heading": "Admissibility of electronic records",
+    "text": "(1) Notwithstanding anything contained in this Adhiniyam, any information contained in an electronic record which is printed on a paper, stored, recorded or copied in optical or magnetic media or semiconductor memory which is produced by a computer or any communication device or otherwise stored, recorded or copied in any electronic form (hereinafter referred to as the computer output) shall be deemed to be also a document, if the conditions mentioned in this section are satisfied... (4) In any proceeding where it is desired to give a statement in evidence by virtue of this section, a certificate doing any of the following things... and purporting to be signed by a person in charge of the computer or communication device or the management of the relevant activities and an expert shall be evidence of any matter stated in the certificate.",
+    "in_force": true
+  },
+  {
+    "act": "Negotiable Instruments Act, 1881",
+    "act_short": "NI",
+    "section": "138",
+    "heading": "Dishonour of cheque for insufficiency of funds",
+    "text": "Where any cheque drawn by a person on an account maintained by him with a banker for payment of any amount of money to another person from out of that account for the discharge, in whole or in part, of any debt or other liability, is returned by the bank unpaid, either because of the amount of money standing to the credit of that account is insufficient to honour the cheque or that it exceeds the amount arranged to be paid from that account by an agreement made with that bank, such person shall be deemed to have committed an offence and shall, without prejudice to any other provisions of this Act, be punished with imprisonment for a term which may be extended to two years, or with fine which may extend to twice the amount of the cheque, or with both.",
+    "in_force": true
+  },
+  {
+    "act": "Negotiable Instruments Act, 1881",
+    "act_short": "NI",
+    "section": "139",
+    "heading": "Presumption in favour of holder",
+    "text": "It shall be presumed, unless the contrary is proved, that the holder of a cheque received the cheque, of the nature referred to in section 138, for the discharge, in whole or in part, of any debt or other liability.",
+    "in_force": true
+  },
+  {
+    "act": "Code of Civil Procedure, 1908",
+    "act_short": "CPC",
+    "section": "9",
+    "heading": "Courts to try all civil suits unless barred",
+    "text": "The Courts shall (subject to the provisions herein contained) have jurisdiction to try all suits of a civil nature excepting suits of which their cognizance is either expressly or impliedly barred.",
+    "in_force": true
+  },
+  {
+    "act": "Code of Civil Procedure, 1908",
+    "act_short": "CPC",
+    "section": "11",
+    "heading": "Res judicata",
+    "text": "No Court shall try any suit or issue in which the matter directly and substantially in issue has been directly and substantially in issue in a former suit between the same parties, or between parties under whom they or any of them claim, litigating under the same title, in a Court competent to try such subsequent suit or the suit in which such issue has been subsequently raised, and has been heard and finally decided by such Court.",
+    "in_force": true
+  },
+  {
+    "act": "Code of Civil Procedure, 1908",
+    "act_short": "CPC",
+    "section": "151",
+    "heading": "Saving of inherent powers of Court",
+    "text": "Nothing in this Code shall be deemed to limit or otherwise affect the inherent power of the Court to make such orders as may be necessary for the ends of justice, or to prevent abuse of the process of the Court.",
+    "in_force": true
+  },
+  {
+    "act": "Specific Relief Act, 1963",
+    "act_short": "SRA",
+    "section": "10",
+    "heading": "Specific performance in respect of contracts",
+    "text": "The specific performance of a contract shall be enforced by the court subject to the provisions contained in sub-section (2) of section 11, section 14 and section 16.",
+    "in_force": true
+  },
+  {
+    "act": "Arbitration and Conciliation Act, 1996",
+    "act_short": "Arbitration",
+    "section": "11",
+    "heading": "Appointment of arbitrators",
+    "text": "(1) A person of any nationality may be an arbitrator, unless otherwise agreed by the parties. (2) Subject to sub-section (6), the parties are free to agree on a procedure for appointing the arbitrator or arbitrators.",
+    "in_force": true
+  },
+  {
+    "act": "Arbitration and Conciliation Act, 1996",
+    "act_short": "Arbitration",
+    "section": "34",
+    "heading": "Application for setting aside arbitral award",
+    "text": "(1) Recourse to a Court against an arbitral award may be made only by an application for setting aside such award in accordance with sub-section (2) and sub-section (3).",
+    "in_force": true
+  },
+  {
+    "act": "Companies Act, 2013",
+    "act_short": "Companies",
+    "section": "242",
+    "heading": "Powers of Tribunal (oppression and mismanagement)",
+    "text": "(1) If, on any application made under section 241, the Tribunal is of the opinion (a) that the company's affairs have been or are being conducted in a manner prejudicial or oppressive to any member or members or prejudicial to public interest or in a manner prejudicial to the interests of the company; and (b) that to wind up the company would unfairly prejudice such member or members, but that otherwise the facts would justify the making of a winding-up order on the ground that it was just and equitable that the company should be wound up, the Tribunal may with a view to bringing to an end the matters complained of, make such order as it thinks fit.",
+    "in_force": true
+  },
+  {
+    "act": "Insolvency and Bankruptcy Code, 2016",
+    "act_short": "IBC",
+    "section": "7",
+    "heading": "Initiation of corporate insolvency resolution process by financial creditor",
+    "text": "(1) A financial creditor either by itself or jointly with other financial creditors, or any other person on behalf of the financial creditor, as may be notified by the Central Government, may file an application for initiating corporate insolvency resolution process against a corporate debtor before the Adjudicating Authority when a default has occurred.",
+    "in_force": true
+  },
+  {
+    "act": "Information Technology Act, 2000",
+    "act_short": "IT",
+    "section": "66",
+    "heading": "Computer related offences",
+    "text": "If any person, dishonestly or fraudulently, does any act referred to in section 43, he shall be punishable with imprisonment for a term which may extend to three years or with fine which may extend to five lakh rupees or with both.",
+    "in_force": true
+  },
+  {
+    "act": "Information Technology Act, 2000",
+    "act_short": "IT",
+    "section": "69A",
+    "heading": "Power to issue directions for blocking public access of any information",
+    "text": "(1) Where the Central Government or any of its officer specially authorised by it in this behalf is satisfied that it is necessary or expedient so to do, in the interest of sovereignty and integrity of India, defence of India, security of the State, friendly relations with foreign States or public order or for preventing incitement to the commission of any cognizable offence relating to above, it may subject to the provisions of sub-section (2), for reasons to be recorded in writing, by order, direct any agency of the Government or intermediary to block for access by the public or cause to be blocked for access by the public any information generated, transmitted, received, stored or hosted in any computer resource.",
+    "in_force": true
+  },
+  {
+    "act": "Prevention of Corruption Act, 1988",
+    "act_short": "PCA",
+    "section": "7",
+    "heading": "Offence relating to public servant being bribed",
+    "text": "Any public servant who — (a) obtains or accepts or attempts to obtain from any person, an undue advantage, with the intention to perform or cause performance of public duty improperly or dishonestly or to forbear or cause forbearance to perform such duty either by himself or by another public servant; or (b) obtains or accepts or attempts to obtain, an undue advantage from any person as a reward for the improper or dishonest performance of a public duty... shall be punishable with imprisonment for a term which shall not be less than three years but which may extend to seven years and shall also be liable to fine.",
+    "in_force": true
+  },
+  {
+    "act": "Hindu Marriage Act, 1955",
+    "act_short": "HMA",
+    "section": "13",
+    "heading": "Divorce",
+    "text": "(1) Any marriage solemnised, whether before or after the commencement of this Act, may, on a petition presented by either the husband or the wife, be dissolved by a decree of divorce on the ground that the other party (i) has, after the solemnisation of the marriage, had voluntary sexual intercourse with any person other than his or her spouse; or (ia) has, after the solemnisation of the marriage, treated the petitioner with cruelty; or (ib) has deserted the petitioner for a continuous period of not less than two years immediately preceding the presentation of the petition.",
+    "in_force": true
+  }
+]

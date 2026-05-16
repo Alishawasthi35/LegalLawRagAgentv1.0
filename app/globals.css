@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Ivory / charcoal / oxblood — restrained, legal */
+    --background: 40 33% 97%;
+    --foreground: 220 14% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 14% 14%;
+    --primary: 350 65% 28%;          /* oxblood */
+    --primary-foreground: 40 33% 97%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 14% 14%;
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 9% 40%;
+    --accent: 39 70% 50%;             /* brass */
+    --accent-foreground: 220 14% 14%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 350 65% 28%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 220 18% 10%;
+    --foreground: 40 30% 94%;
+    --card: 220 18% 13%;
+    --card-foreground: 40 30% 94%;
+    --primary: 350 60% 55%;
+    --primary-foreground: 220 18% 10%;
+    --secondary: 220 14% 18%;
+    --secondary-foreground: 40 30% 94%;
+    --muted: 220 14% 18%;
+    --muted-foreground: 220 9% 65%;
+    --accent: 39 70% 60%;
+    --accent-foreground: 220 18% 10%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 40 30% 94%;
+    --border: 220 14% 22%;
+    --input: 220 14% 22%;
+    --ring: 350 60% 55%;
+  }
+
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased; font-feature-settings: "ss01", "cv01"; }
+
+  .legal-quote {
+    @apply font-serif italic text-[15px] leading-relaxed;
+    quotes: "\201C" "\201D";
+  }
+  .legal-quote::before { content: open-quote; }
+  .legal-quote::after { content: close-quote; }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { @apply bg-border rounded; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+}
