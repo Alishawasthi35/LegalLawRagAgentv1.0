@@ -199,6 +199,18 @@ function Section({
   );
 }
 
+/** Map the agent's query_type to a human-readable badge label. */
+function labelForType(t: StructuredAnswer["query_type"]): string {
+  switch (t) {
+    case "doctrinal_summary":   return "Doctrinal summary";
+    case "case_lookup":         return "Case lookup";
+    case "section_lookup":      return "Section lookup";
+    case "factual_application": return "Factual application";
+    case "comparison":          return "Comparison";
+    default:                    return "Research";
+  }
+}
+
 /** Render inline [#N] citation markers as superscript pills. */
 function renderInlineCitations(text: string): React.ReactNode {
   const parts: React.ReactNode[] = [];
