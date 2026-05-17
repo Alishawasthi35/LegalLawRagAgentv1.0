@@ -3,10 +3,27 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Plus, Search, LogOut, MessageSquare, MoreHorizontal, Trash2, Pencil, Settings } from "lucide-react";
+import {
+  Plus,
+  Search,
+  LogOut,
+  MessageSquare,
+  MoreHorizontal,
+  Trash2,
+  Pencil,
+  Settings,
+  ShieldOff,
+  Menu
+} from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger
+} from "@/components/ui/sheet";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -25,10 +42,56 @@ interface SessionRow {
 
 export function SessionSidebar({
   sessions: initial,
-  userEmail
+  userEmail,
+  isGuest = false
 }: {
   sessions: SessionRow[];
   userEmail: string;
+  isGuest?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      {/* Mobile hamburger — fixed to top-left, only visible <md */}
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetTrigger asChild>
+          <button
+            className="fixed left-3 top-3 z-40 inline-flex h-9 w-9 items-center justify-center rounded-md border bg-card shadow-sm md:hidden"
+            aria-label="Open menu"
+          >
+            <Menu className="h-4 w-4" />
+          </button>
+        </SheetTrigger>
+        <SheetContent side="left" className="w-72 p-0">
+          <SheetTitle className="sr-only">Research sessions</SheetTitle>
+          <SidebarContent
+            sessions={initial}
+            userEmail={userEmail}
+            isGuest={isGuest}
+            onNavigate={() => setOpen(false)}
+          />
+        </SheetContent>
+      </Sheet>
+
+      {/* Desktop sidebar — md+ only */}
+      <aside className="hidden h-[100dvh] w-72 flex-col border-r bg-secondary/30 md:flex">
+        <SidebarContent sessions={initial} userEmail={userEmail} isGuest={isGuest} />
+      </aside>
+    </>
+  );
+}
+
+function SidebarContent({
+  sessions: initial,
+  userEmail,
+  isGuest,
+  onNavigate
+}: {
+  sessions: SessionRow[];
+  userEmail: string;
+  isGuest: boolean;
+  onNavigate?: () => void;
 }) {
   const [q, setQ] = useState("");
   const [sessions, setSessions] = useState<SessionRow[]>(initial);
@@ -76,13 +139,17 @@ export function SessionSidebar({
   }
 
   return (
-    <aside className="hidden h-screen w-72 flex-col border-r bg-secondary/30 md:flex">
+    <div className="flex h-full flex-col">
       <div className="flex h-14 items-center border-b px-4">
-        <Link href="/app" className="text-sm font-medium">
+        <Link
+          href="/app"
+          onClick={onNavigate}
+          className="text-sm font-medium"
+        >
           New research
         </Link>
         <Button asChild size="sm" variant="ghost" className="ml-auto h-8 w-8 p-0">
-          <Link href="/app" aria-label="New research">
+          <Link href="/app" aria-label="New research" onClick={onNavigate}>
             <Plus className="h-4 w-4" />
           </Link>
         </Button>
@@ -116,7 +183,11 @@ export function SessionSidebar({
                 active && "bg-background shadow-sm"
               )}
             >
-              <Link href={`/app/${s.id}`} className="flex flex-1 items-start gap-2 text-sm">
+              <Link
+                href={`/app/${s.id}`}
+                onClick={onNavigate}
+                className="flex flex-1 items-start gap-2 text-sm"
+              >
                 <MessageSquare className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground" />
                 <span className="line-clamp-2 leading-snug">{truncate(s.title, 80)}</span>
               </Link>
@@ -148,17 +219,29 @@ export function SessionSidebar({
       <div className="border-t p-3">
         <Link
           href="/settings"
+          onClick={onNavigate}
           className="mb-2 flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-background hover:text-foreground"
         >
           <Settings className="h-3.5 w-3.5" /> Settings
         </Link>
-        <div className="mb-2 px-2 text-xs text-muted-foreground" title={userEmail}>
-          {truncate(userEmail, 28)}
-        </div>
-        <Button variant="ghost" size="sm" className="w-full justify-start" onClick={signOut}>
-          <LogOut className="mr-2 h-3.5 w-3.5" /> Sign out
-        </Button>
+        {isGuest ? (
+          <div className="rounded-md border border-amber-200 bg-amber-50 px-2 py-1.5 text-[11px] leading-tight text-amber-900">
+            <div className="flex items-center gap-1 font-medium">
+              <ShieldOff className="h-3 w-3" /> Guest mode
+            </div>
+            <div className="mt-0.5 opacity-80">Auth disabled — data is shared across all visitors.</div>
+          </div>
+        ) : (
+          <>
+            <div className="mb-2 px-2 text-xs text-muted-foreground" title={userEmail}>
+              {truncate(userEmail, 28)}
+            </div>
+            <Button variant="ghost" size="sm" className="w-full justify-start" onClick={signOut}>
+              <LogOut className="mr-2 h-3.5 w-3.5" /> Sign out
+            </Button>
+          </>
+        )}
       </div>
-    </aside>
+    </div>
   );
 }

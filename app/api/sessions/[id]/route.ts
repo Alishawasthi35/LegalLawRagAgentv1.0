@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { getCurrentUser, getDbClient } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
 export async function GET(_req: Request, { params }: { params: { id: string } }) {
-  const sb = createClient();
-  const { data: { user } } = await sb.auth.getUser();
+  const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  const sb = getDbClient();
 
   const { data: session } = await sb
     .from("chat_sessions")
@@ -26,9 +26,9 @@ export async function GET(_req: Request, { params }: { params: { id: string } })
 }
 
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
-  const sb = createClient();
-  const { data: { user } } = await sb.auth.getUser();
+  const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  const sb = getDbClient();
 
   const body = await req.json().catch(() => null);
   if (!body) return NextResponse.json({ error: "invalid body" }, { status: 400 });
@@ -50,9 +50,9 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
 }
 
 export async function DELETE(_req: Request, { params }: { params: { id: string } }) {
-  const sb = createClient();
-  const { data: { user } } = await sb.auth.getUser();
+  const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  const sb = getDbClient();
 
   const { error } = await sb
     .from("chat_sessions")

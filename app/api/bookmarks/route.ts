@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { getCurrentUser, getDbClient } from "@/lib/auth";
 import { createServiceClient } from "@/lib/supabase/service";
 import { ikDocMeta, ikUrl } from "@/lib/indiankanoon";
 
 export const runtime = "nodejs";
 
 export async function GET() {
-  const sb = createClient();
-  const { data: { user } } = await sb.auth.getUser();
+  const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  const sb = getDbClient();
 
   const { data, error } = await sb
     .from("bookmarks")
@@ -24,9 +24,9 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  const sb = createClient();
-  const { data: { user } } = await sb.auth.getUser();
+  const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  const sb = getDbClient();
 
   const body = await req.json().catch(() => null);
   if (!body) return NextResponse.json({ error: "invalid body" }, { status: 400 });
@@ -39,8 +39,6 @@ export async function POST(req: Request) {
     tags?: string[];
   };
 
-  // If we only have an IK doc id (not yet ingested into our corpus), create
-  // a lightweight stub case row so the bookmark has something to point at.
   if (!case_id && !statute_id && ik_doc_id) {
     const service = createServiceClient();
     const { data: existing } = await service
@@ -100,9 +98,9 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
-  const sb = createClient();
-  const { data: { user } } = await sb.auth.getUser();
+  const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  const sb = getDbClient();
   const { id } = await req.json();
   const { error } = await sb.from("bookmarks").delete().eq("id", id).eq("user_id", user.id);
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });

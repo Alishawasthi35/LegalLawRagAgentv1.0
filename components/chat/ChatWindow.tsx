@@ -151,7 +151,7 @@ export function ChatWindow({
   return (
     <div className="flex h-full flex-col">
       <div ref={scrollRef} className="scrollbar-thin flex-1 overflow-y-auto">
-        <div className="mx-auto max-w-3xl px-4 py-8">
+        <div className="mx-auto max-w-3xl px-3 py-4 sm:px-4 sm:py-8">
           {empty && <EmptyState onPick={ask} />}
 
           {history.map((m, idx) => {

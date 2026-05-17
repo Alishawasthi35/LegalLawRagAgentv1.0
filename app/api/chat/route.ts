@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
 import { createServiceClient } from "@/lib/supabase/service";
+import { getCurrentUser } from "@/lib/auth";
 import { runAgent } from "@/lib/agent";
 
 export const runtime = "nodejs";
@@ -12,8 +12,7 @@ interface ChatBody {
 }
 
 export async function POST(req: Request) {
-  const sb = createClient();
-  const { data: { user } } = await sb.auth.getUser();
+  const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
 
   let body: ChatBody;
@@ -25,6 +24,8 @@ export async function POST(req: Request) {
   const query = (body.query || "").trim();
   if (!query) return NextResponse.json({ error: "empty query" }, { status: 400 });
 
+  // We always use the service client for writes — it bypasses RLS, which is
+  // fine because we explicitly tag user_id from the auth helper.
   const service = createServiceClient();
 
   // Ensure / create the session.
@@ -91,7 +92,6 @@ export async function POST(req: Request) {
         }
 
         if (finalAnswer) {
-          // Persist assistant message with compressed audit trail.
           const compressedTrace = finalTrace
             ? {
                 plan: finalTrace.plan,

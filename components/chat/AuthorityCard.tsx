@@ -52,8 +52,8 @@ export function AuthorityCard({ a, idx }: { a: AuthorityClaim; idx: number }) {
   }
 
   return (
-    <div className="group rounded-lg border bg-card p-4 transition-colors hover:border-primary/40">
-      <div className="mb-2 flex items-start justify-between gap-3">
+    <div className="group rounded-lg border bg-card p-3 transition-colors hover:border-primary/40 sm:p-4">
+      <div className="mb-2 flex flex-col-reverse items-start justify-between gap-2 sm:flex-row sm:gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <span className="font-serif text-[15px] font-semibold leading-snug">

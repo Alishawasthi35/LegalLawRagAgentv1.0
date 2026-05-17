@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
 import { ExternalLink, Bookmark } from "lucide-react";
+import { getCurrentUser, getDbClient } from "@/lib/auth";
 import { Badge } from "@/components/ui/badge";
 
 export default async function BookmarksPage() {
-  const sb = createClient();
-  const { data: { user } } = await sb.auth.getUser();
+  const user = await getCurrentUser();
   if (!user) redirect("/login");
 
+  const sb = getDbClient();
   const { data: bookmarks } = await sb
     .from("bookmarks")
     .select(
@@ -20,7 +20,7 @@ export default async function BookmarksPage() {
     .order("created_at", { ascending: false });
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-[100dvh] bg-background">
       <header className="border-b">
         <div className="container flex h-14 items-center justify-between">
           <Link href="/app" className="text-sm font-medium hover:underline">
@@ -33,9 +33,9 @@ export default async function BookmarksPage() {
         </div>
       </header>
 
-      <div className="container max-w-4xl py-8">
+      <div className="container max-w-4xl px-4 py-8">
         {(!bookmarks || bookmarks.length === 0) && (
-          <div className="rounded-lg border bg-secondary/30 p-12 text-center text-muted-foreground">
+          <div className="rounded-lg border bg-secondary/30 p-8 text-center text-sm text-muted-foreground sm:p-12">
             No bookmarks yet. Click the bookmark icon next to any authority in a research result to save it here.
           </div>
         )}

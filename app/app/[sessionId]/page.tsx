@@ -1,12 +1,12 @@
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { getCurrentUser, getDbClient } from "@/lib/auth";
 import { ChatWindow } from "@/components/chat/ChatWindow";
 
 export default async function SessionPage({ params }: { params: { sessionId: string } }) {
-  const sb = createClient();
-  const { data: { user } } = await sb.auth.getUser();
+  const user = await getCurrentUser();
   if (!user) redirect("/login");
 
+  const sb = getDbClient();
   const { data: session } = await sb
     .from("chat_sessions")
     .select("id, title")

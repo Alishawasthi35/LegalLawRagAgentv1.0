@@ -23,9 +23,9 @@ export function StructuredAnswerView({
 }) {
   const [traceOpen, setTraceOpen] = useState(false);
   return (
-    <article className="animate-slide-up space-y-6">
+    <article className="animate-slide-up space-y-5 sm:space-y-6">
       {/* Headline */}
-      <header className="rounded-lg border bg-card p-5">
+      <header className="rounded-lg border bg-card p-4 sm:p-5">
         <div className="mb-2 flex flex-wrap items-center gap-2">
           <Badge variant="default">{labelForType(a.query_type)}</Badge>
           {a.meta?.warning && (
@@ -40,7 +40,7 @@ export function StructuredAnswerView({
             </span>
           )}
         </div>
-        <h2 className="font-serif text-xl font-semibold leading-snug">{a.headline}</h2>
+        <h2 className="font-serif text-lg font-semibold leading-snug sm:text-xl">{a.headline}</h2>
         {a.issue && <p className="mt-2 text-sm text-muted-foreground">{a.issue}</p>}
       </header>
 

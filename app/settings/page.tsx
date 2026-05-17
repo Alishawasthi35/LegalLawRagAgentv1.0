@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ArrowLeft, CheckCircle2, XCircle, AlertCircle, Database, Cpu, Search, Zap } from "lucide-react";
-import { createClient } from "@/lib/supabase/server";
+import { getCurrentUser, getDbClient, AUTH_DISABLED } from "@/lib/auth";
 import { createServiceClient } from "@/lib/supabase/service";
 import { Badge } from "@/components/ui/badge";
 
 export const dynamic = "force-dynamic";
 
 export default async function SettingsPage() {
-  const sb = createClient();
-  const { data: { user } } = await sb.auth.getUser();
+  const user = await getCurrentUser();
   if (!user) redirect("/login");
+  const sb = getDbClient();
 
   // Provider configuration status (server-side; we only check env presence).
   const providers = [

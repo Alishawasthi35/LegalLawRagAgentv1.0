@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Scale, BookOpenCheck, ShieldCheck, Sparkles, ArrowRight, GitBranch, Clock } from "lucide-react";
-import { createClient } from "@/lib/supabase/server";
+import { getCurrentUser, AUTH_DISABLED } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
 export default async function LandingPage() {
-  // If the user is already signed in, CTAs jump straight to the workspace.
-  const sb = createClient();
-  const { data: { user } } = await sb.auth.getUser();
-  const ctaHref = user ? "/app" : "/login";
-  const ctaLabel = user ? "Continue research" : "Begin research";
-  const heroLabel = user ? "Open workspace" : "Open the workspace";
+  // In guest mode, or for signed-in users, CTAs jump directly to /app.
+  // Otherwise the CTAs go to /login.
+  const user = AUTH_DISABLED ? null : await getCurrentUser();
+  const goToApp = AUTH_DISABLED || Boolean(user);
+  const ctaHref = goToApp ? "/app" : "/login";
+  const ctaLabel = AUTH_DISABLED ? "Open workspace" : user ? "Continue research" : "Begin research";
+  const heroLabel = AUTH_DISABLED ? "Open workspace" : user ? "Open workspace" : "Open the workspace";
+  const showSignIn = !AUTH_DISABLED && !user;
   return (
     <main className="min-h-screen bg-background">
       <header className="border-b">
@@ -24,7 +26,7 @@ export default async function LandingPage() {
             </span>
           </Link>
           <nav className="flex items-center gap-3">
-            {!user && (
+            {showSignIn && (
               <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground">
                 Sign in
               </Link>
@@ -36,27 +38,27 @@ export default async function LandingPage() {
         </div>
       </header>
 
-      <section className="container py-20">
+      <section className="container px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border bg-secondary px-3 py-1 text-xs">
             <Sparkles className="h-3 w-3 text-primary" />
             <span className="text-muted-foreground">An agentic RAG system, grounded in Indian case law</span>
           </div>
-          <h1 className="font-serif text-5xl font-semibold leading-tight tracking-tight">
+          <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight sm:text-5xl">
             A rigorous research desk for the Bench.
           </h1>
-          <p className="mt-6 text-lg text-muted-foreground">
+          <p className="mt-4 text-base text-muted-foreground sm:mt-6 sm:text-lg">
             Nyaya decomposes your question, searches across IndianKanoon, statutes, and a curated
             corpus, then produces a structured analysis with verbatim quotes and citations you can
             verify in one click. Built for judges who cannot afford a single fabricated citation.
           </p>
-          <div className="mt-8 flex items-center justify-center gap-3">
-            <Button asChild size="lg">
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button asChild size="lg" className="w-full sm:w-auto">
               <Link href={ctaHref}>
                 {heroLabel} <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
               <Link href="https://github.com" target="_blank" rel="noreferrer">
                 View architecture
               </Link>
@@ -65,8 +67,8 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      <section className="container pb-24">
-        <div className="grid gap-6 md:grid-cols-3">
+      <section className="container px-4 pb-16 sm:pb-24">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           <FeatureCard
             icon={<GitBranch className="h-5 w-5" />}
             title="Multi-step legal reasoning"

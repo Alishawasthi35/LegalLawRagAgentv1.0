@@ -1,7 +1,12 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+const AUTH_DISABLED = process.env.NEXT_PUBLIC_DISABLE_AUTH === "true";
+
 export async function middleware(request: NextRequest) {
+  // Guest mode — let everything through without any auth check.
+  if (AUTH_DISABLED) return NextResponse.next();
+
   let response = NextResponse.next({ request: { headers: request.headers } });
 
   const supabase = createServerClient(
