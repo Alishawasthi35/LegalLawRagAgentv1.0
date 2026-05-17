@@ -81,7 +81,6 @@ export function plannerUserPrompt(query: string, history?: string): string {
  */
 export function renderContext(
   chunks: Array<{
-    id: string | number;
     case_title?: string;
     citation?: string;
     court?: string;
