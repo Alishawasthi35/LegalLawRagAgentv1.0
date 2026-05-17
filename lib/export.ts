@@ -28,6 +28,14 @@ export function answerToMarkdown(a: StructuredAnswer, question?: string): string
     lines.push("");
   }
 
+  if (a.doctrinal_framework?.length) {
+    lines.push(`## Doctrinal Framework`);
+    a.doctrinal_framework.forEach((p, i) => {
+      lines.push(`${i + 1}. **${p.title}** — ${p.detail}${p.authority ? `  _(per ${p.authority})_` : ""}`);
+    });
+    lines.push("");
+  }
+
   const renderAuthorities = (header: string, list?: typeof a.leading_authorities) => {
     if (!list?.length) return;
     lines.push(`## ${header}`);
@@ -68,6 +76,12 @@ export function answerToMarkdown(a: StructuredAnswer, question?: string): string
   if (a.analysis) {
     lines.push(`## Analysis`);
     lines.push(a.analysis);
+    lines.push("");
+  }
+
+  if (a.practical_guidance?.length) {
+    lines.push(`## Practical Guidance`);
+    for (const g of a.practical_guidance) lines.push(`- ${g}`);
     lines.push("");
   }
 

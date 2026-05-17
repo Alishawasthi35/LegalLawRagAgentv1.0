@@ -3,6 +3,7 @@ import { createServiceClient } from "@/lib/supabase/service";
 import { geminiText } from "@/lib/gemini";
 import { groqText, groqAvailable } from "@/lib/groq";
 import { ikSearch, indianKanoonConfigured } from "@/lib/indiankanoon";
+import { tavilySearch, tavilyAvailable } from "@/lib/tavily";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -42,6 +43,12 @@ export async function GET() {
   results.push(await time("indiankanoon", indianKanoonConfigured(), async () => {
     const r = await ikSearch("test", { pagenum: 0, maxpages: 1 });
     return `${r.found ?? 0} results for probe`;
+  }));
+
+  // Tavily (optional 4th retriever)
+  results.push(await time("tavily", tavilyAvailable(), async () => {
+    const r = await tavilySearch("Indian constitution", { max_results: 1 });
+    return `${r.length} probe results`;
   }));
 
   const overall = results.every((r) => !r.configured || r.ok) ? "healthy" : "degraded";

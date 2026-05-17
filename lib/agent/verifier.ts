@@ -27,21 +27,31 @@ export function verify(
     bucketName: string
   ): AuthorityClaim[] => {
     if (!bucket) return [];
-    return bucket.flatMap((claim, i) => {
+    return bucket.map((claim, i) => {
       const quoteOk =
         !claim.verbatim_quote || quoteIsGrounded(claim.verbatim_quote, contextTexts);
       const caseKey = claim.case?.toLowerCase().replace(/[\s,.]+/g, "");
       const caseOk = caseKey ? contextCases.has(caseKey) || nameAppearsAnywhere(claim.case, contextTexts) : false;
 
-      if (!quoteOk && !caseOk) {
-        issues.push(`${bucketName}[${i}] "${claim.case}" — no grounding`);
-        return []; // remove unverified
+      // Soft mode: never delete. Strip the unverifiable quote, downgrade
+      // confidence, and flag for the UI. This preserves useful analysis
+      // while still being transparent about what is/isn't grounded.
+      let finalQuote = claim.verbatim_quote;
+      if (claim.verbatim_quote && !quoteOk) {
+        finalQuote = "";  // remove unverifiable quote rather than the whole claim
+        issues.push(`${bucketName}[${i}] "${claim.case}" — verbatim quote not found in context (stripped)`);
       }
-      return [{
-        ...claim,
-        verified: Boolean(quoteOk && caseOk),
-        confidence: !quoteOk || !caseOk ? "low" : (claim.confidence ?? "medium")
-      }];
+      if (!caseOk && claim.case) {
+        issues.push(`${bucketName}[${i}] "${claim.case}" — case not in retrieved context (verify before citing)`);
+      }
+
+      const verified = Boolean(quoteOk && caseOk && claim.verbatim_quote);
+      const confidence: AuthorityClaim["confidence"] =
+        verified ? (claim.confidence ?? "high")
+        : quoteOk && caseOk ? "medium"
+        : "low";
+
+      return { ...claim, verbatim_quote: finalQuote ?? "", verified, confidence };
     });
   };
 
@@ -61,9 +71,7 @@ export function verify(
   if (issues.length) {
     verified.meta = {
       ...verified.meta,
-      warning: `Verifier removed ${issues.length} unverified claim${issues.length === 1 ? "" : "s"}: ${issues
-        .slice(0, 3)
-        .join("; ")}${issues.length > 3 ? "…" : ""}`
+      warning: `${issues.length} claim${issues.length === 1 ? "" : "s"} not fully grounded in retrieved context — confidence downgraded, verify before relying.`
     };
   }
   return verified;

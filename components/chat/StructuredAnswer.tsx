@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AlertTriangle, Gavel, BookOpen, GitBranch, ScrollText, Sparkles, TimerReset } from "lucide-react";
+import { AlertTriangle, Gavel, BookOpen, GitBranch, ScrollText, Sparkles, TimerReset, ListChecks, Compass } from "lucide-react";
 import { AuthorityCard } from "./AuthorityCard";
 import { MessageActions } from "./MessageActions";
 import { TraceViewer } from "./TraceViewer";
@@ -62,6 +62,31 @@ export function StructuredAnswerView({
                   )}
                 </div>
                 <p className="mt-2 text-sm leading-relaxed legal-quote">{s.text_verbatim}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {/* Doctrinal framework — the legal elements / tests / factors */}
+      {(a.doctrinal_framework ?? []).length > 0 && (
+        <Section icon={<Compass className="h-4 w-4" />} title="Doctrinal framework">
+          <div className="space-y-2">
+            {a.doctrinal_framework!.map((p, i) => (
+              <div key={i} className="rounded-md border bg-card p-3">
+                <div className="flex items-baseline gap-2">
+                  <span className="font-mono text-[10px] text-muted-foreground">{(i + 1).toString().padStart(2, "0")}</span>
+                  <div className="flex-1">
+                    <div className="font-medium leading-snug">{p.title}</div>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{p.detail}</p>
+                    {p.authority && (
+                      <div className="mt-1 text-xs">
+                        <span className="font-mono text-muted-foreground">per</span>{" "}
+                        <span className="font-medium">{p.authority}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -130,6 +155,20 @@ export function StructuredAnswerView({
           <div className="rounded-md border bg-card p-4 text-[15px] leading-relaxed whitespace-pre-wrap">
             {renderInlineCitations(a.analysis)}
           </div>
+        </Section>
+      )}
+
+      {/* Practical guidance — judge-facing bullets */}
+      {(a.practical_guidance ?? []).length > 0 && (
+        <Section icon={<ListChecks className="h-4 w-4" />} title="Practical guidance">
+          <ul className="space-y-1.5">
+            {a.practical_guidance!.map((g, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                <span>{g}</span>
+              </li>
+            ))}
+          </ul>
         </Section>
       )}
 

@@ -28,10 +28,12 @@ export async function synthesize(query: string, chunks: RetrievedChunk[]): Promi
   const parsed = extractJson<StructuredAnswer>(raw);
   // Backfill defaults.
   parsed.applicable_law ??= [];
+  parsed.doctrinal_framework ??= [];
   parsed.leading_authorities ??= [];
   parsed.subsequent_application ??= [];
   parsed.divergence_or_doubts ??= [];
   parsed.recent_developments ??= [];
+  parsed.practical_guidance ??= [];
   parsed.unresolved_questions ??= [];
   parsed.caveats ??= [
     "This is a research aid; verify all citations against the original judgment before relying."

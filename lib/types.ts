@@ -40,6 +40,12 @@ export interface RecentDevelopment {
   case_ref?: CaseRef;
 }
 
+export interface FrameworkPoint {
+  title: string;          // short headline of the principle / element / factor
+  detail: string;         // 1-3 sentence expansion
+  authority?: string;     // optional case or section reference
+}
+
 export interface StructuredAnswer {
   headline: string;
   issue: string;
@@ -51,11 +57,13 @@ export interface StructuredAnswer {
     | "comparison"
     | "other";
   applicable_law: StatuteRef[];
+  doctrinal_framework?: FrameworkPoint[];  // elements / tests / factors — always populated when relevant
   leading_authorities: AuthorityClaim[];
   subsequent_application?: AuthorityClaim[];
   divergence_or_doubts?: AuthorityClaim[];
   recent_developments?: RecentDevelopment[];
   analysis: string;
+  practical_guidance?: string[];           // bullet-list takeaways for a judge to apply
   unresolved_questions?: string[];
   caveats: string[];
   meta: {
@@ -81,7 +89,7 @@ export interface AgentPlan {
 
 export interface RetrievedChunk {
   chunk_id: string;
-  source: "pgvector" | "indiankanoon" | "statute" | "sci_recent";
+  source: "pgvector" | "indiankanoon" | "statute" | "sci_recent" | "web";
   case_id?: string;
   ik_doc_id?: string;
   case_title?: string;

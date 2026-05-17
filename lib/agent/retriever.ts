@@ -8,10 +8,13 @@ import {
   indianKanoonConfigured,
   type IKSearchHit
 } from "@/lib/indiankanoon";
+import { tavilySearch, tavilyAvailable, INDIAN_LEGAL_DOMAINS } from "@/lib/tavily";
 import type { AgentPlan, RetrievedChunk } from "@/lib/types";
 
-const MAX_CHUNKS_PER_SUBQ = 6;
-const MAX_IK_HITS_PER_SUBQ = 4;
+const MAX_CHUNKS_PER_SUBQ = 10;
+const MAX_IK_HITS_PER_SUBQ = 6;
+const IK_BODY_MAX_BYTES = 80_000;       // fetch up to ~80KB even for big docs
+const IK_BODY_KEEP_CHARS = 3500;        // pull a substantial slice for context
 
 /**
  * Run hybrid retrieval against (a) pgvector corpus, (b) IndianKanoon live API,
@@ -50,14 +53,15 @@ export async function retrieve(plan: AgentPlan): Promise<RetrievedChunk[]> {
     })
   );
 
-  // 2) For each sub-question, embed + pgvector + IK in parallel.
+  // 2) For each sub-question, run pgvector + IK + Tavily in parallel.
   await Promise.all(
     plan.sub_questions.map(async (sq) => {
-      const [pg, ik] = await Promise.all([
+      const [pg, ik, web] = await Promise.all([
         pgvectorSearch(supabase, sq, plan),
-        indianKanoonConfigured() ? indianKanoonSearch(sq, plan) : Promise.resolve([])
+        indianKanoonConfigured() ? indianKanoonSearch(sq, plan) : Promise.resolve([]),
+        tavilyAvailable() ? tavilyWebSearch(sq) : Promise.resolve([])
       ]);
-      for (const c of pg.concat(ik)) {
+      for (const c of pg.concat(ik).concat(web)) {
         const key = c.case_title
           ? `${c.case_title}:${c.para_number ?? c.text.slice(0, 60)}`
           : c.text.slice(0, 80);
@@ -104,7 +108,7 @@ async function pgvectorSearch(
   const { data, error } = await sb.rpc("match_case_chunks", {
     query_embedding: embedding,
     match_count: MAX_CHUNKS_PER_SUBQ,
-    similarity_threshold: 0.45,
+    similarity_threshold: 0.30,    // lower threshold = higher recall
     court_filter: plan.jurisdictions && plan.jurisdictions.length === 1 ? plan.jurisdictions[0] : null,
     min_date: minDate
   });
@@ -121,6 +125,24 @@ async function pgvectorSearch(
     text: row.chunk_text,
     similarity: row.similarity,
     url: row.url
+  }));
+}
+
+async function tavilyWebSearch(question: string): Promise<RetrievedChunk[]> {
+  // Bias the search toward Indian legal commentary domains.
+  const queryWithContext = `Indian law: ${question}`;
+  const results = await tavilySearch(queryWithContext, {
+    max_results: 4,
+    include_domains: INDIAN_LEGAL_DOMAINS,
+    search_depth: "basic"
+  });
+  return results.map((r, i): RetrievedChunk => ({
+    chunk_id: `web:${i}:${r.url}`,
+    source: "web",
+    case_title: r.title,
+    text: r.content,
+    url: r.url,
+    decision_date: r.published_date
   }));
 }
 
@@ -155,12 +177,13 @@ async function indianKanoonSearch(question: string, plan: AgentPlan): Promise<Re
       url: ikUrl(h.tid)
     });
 
-    if (h.docsize && h.docsize < 30_000) {
+    // Aggressively fetch doc body for ALL hits up to a size cap — small slices
+    // of the actual judgment beat headlines for grounded synthesis.
+    if (h.docsize && h.docsize < IK_BODY_MAX_BYTES) {
       try {
         const doc = await ikDoc(h.tid, { maxcites: 5, maxcitedby: 5 });
         const plain = ikStripHtml(doc.doc || "");
         if (plain) {
-          // Take only the first ~1500 chars to keep prompts small.
           chunks.push({
             chunk_id: `ik:${h.tid}:body`,
             source: "indiankanoon",
@@ -169,7 +192,7 @@ async function indianKanoonSearch(question: string, plan: AgentPlan): Promise<Re
             court: doc.docsource || h.docsource,
             decision_date: doc.publishdate || h.publishdate,
             citation: doc.citation,
-            text: plain.slice(0, 1500),
+            text: plain.slice(0, IK_BODY_KEEP_CHARS),
             url: ikUrl(h.tid)
           });
         }

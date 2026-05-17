@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Scale, Mail, Loader2, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,25 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Surface any Supabase-redirect error embedded in the URL hash fragment.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const hash = window.location.hash.replace(/^#/, "");
+    if (!hash) return;
+    const params = new URLSearchParams(hash);
+    const errCode = params.get("error_code");
+    const errDesc = params.get("error_description");
+    if (errCode || errDesc) {
+      const friendly =
+        errCode === "otp_expired"
+          ? "That magic link is no longer valid. Each new link invalidates older ones — request a fresh link below and open the most recent email."
+          : (errDesc?.replace(/\+/g, " ") ?? "Sign-in error");
+      setError(friendly);
+      // Clear the hash so the error doesn't persist on refresh.
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+  }, []);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
