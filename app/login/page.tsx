@@ -19,11 +19,20 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const sb = createClient();
+      // Always derive the origin from the live window — guaranteed correct.
+      // The env var fallback is only for cases where this file is somehow
+      // executed server-side (it shouldn't be, since it's a client component).
       const origin =
-        process.env.NEXT_PUBLIC_APP_URL || (typeof window !== "undefined" ? window.location.origin : "");
+        typeof window !== "undefined" && window.location?.origin
+          ? window.location.origin
+          : (process.env.NEXT_PUBLIC_APP_URL ?? "").replace(/\/+$/, "");
+      if (!origin) {
+        throw new Error("Could not determine app origin");
+      }
+      const redirectTo = `${origin}/auth/callback?next=/app`;
       const { error } = await sb.auth.signInWithOtp({
         email,
-        options: { emailRedirectTo: `${origin}/auth/callback?next=/app` }
+        options: { emailRedirectTo: redirectTo }
       });
       if (error) throw error;
       setSent(true);
