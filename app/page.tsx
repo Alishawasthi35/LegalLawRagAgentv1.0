@@ -1,8 +1,17 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Scale, BookOpenCheck, ShieldCheck, Sparkles, ArrowRight, GitBranch, Clock } from "lucide-react";
+import { createClient } from "@/lib/supabase/server";
 
-export default function LandingPage() {
+export const dynamic = "force-dynamic";
+
+export default async function LandingPage() {
+  // If the user is already signed in, CTAs jump straight to the workspace.
+  const sb = createClient();
+  const { data: { user } } = await sb.auth.getUser();
+  const ctaHref = user ? "/app" : "/login";
+  const ctaLabel = user ? "Continue research" : "Begin research";
+  const heroLabel = user ? "Open workspace" : "Open the workspace";
   return (
     <main className="min-h-screen bg-background">
       <header className="border-b">
@@ -15,11 +24,13 @@ export default function LandingPage() {
             </span>
           </Link>
           <nav className="flex items-center gap-3">
-            <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground">
-              Sign in
-            </Link>
+            {!user && (
+              <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground">
+                Sign in
+              </Link>
+            )}
             <Button asChild size="sm">
-              <Link href="/login">Begin research</Link>
+              <Link href={ctaHref}>{ctaLabel}</Link>
             </Button>
           </nav>
         </div>
@@ -41,8 +52,8 @@ export default function LandingPage() {
           </p>
           <div className="mt-8 flex items-center justify-center gap-3">
             <Button asChild size="lg">
-              <Link href="/login">
-                Open the workspace <ArrowRight className="ml-2 h-4 w-4" />
+              <Link href={ctaHref}>
+                {heroLabel} <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
